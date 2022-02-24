@@ -1,0 +1,13 @@
+[Unit]
+Description=MediaWiki Job runner service
+
+[Service]
+ExecStart=/usr/local/bin/mw-jobqueue.runner
+Nice=10
+ProtectSystem=full
+User=www-data
+OOMScoreAdjust=200
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target

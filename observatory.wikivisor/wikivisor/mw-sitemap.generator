@@ -1,0 +1,23 @@
+#!/bin/bash
+MW_HOME=/var/www/html/w
+SCRIPT=$MW_HOME/maintenance/generateSitemap.php
+SLEEPDAYS=86400
+
+echo Starting sitemap generator...
+# Wait three minutes after the server starts up to give other processes time to get started
+sleep 30
+echo Sitemap generator started.
+while true; do
+    php $SCRIPT \
+      --memory-limit=50M \
+      --fspath=$MW_HOME/sitemap/ \
+      --urlpath=/w/sitemap/ \
+      --compress yes \
+      --server=https://observatory.wiki \
+      --skip-redirects \
+      --identifier=observatorywiki
+
+    # Wait some seconds to let the CPU do other things, like handling web requests, etc
+    echo mw-sitemap.generator waits for "$SLEEPDAYS" seconds...
+    sleep "$SLEEPDAYS"
+done

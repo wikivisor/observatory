@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+<?xml-model href="https://ProfessionalWiki.github.io/chameleon/schema/1.0/layout.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+This file is part of the MediaWiki skin Chameleon.
+
+@copyright 2013 - 2019, Stephan Gambke
+@license   GNU General Public License, version 3 (or any later version)
+
+The Chameleon skin is free software: you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+The Chameleon skin is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+details.
+
+You should have received a copy of the GNU General Public License along
+with this program. If not, see <http://www.gnu.org/licenses/>.
+
+@author Stephan Gambke
+@since 1.1
+@ingroup Skins
+-->
+<structure xmlns="https://ProfessionalWiki.github.io/chameleon/schema/3.0/layout.rng">
+	<component type="Container" class="topmenu small shadow-sm w-100">
+        <grid>
+                <row>
+                        <cell class="p-0">
+                                <component type="NavbarHorizontal" class="p-0" collapsible="no">
+                                        <component type="Container" class="d-flex w-100 justify-content-between">
+                                                <component type="Html"><![CDATA[
+                                                        <div class="d-inline-block nav-item sitename text-nowrap"><a href="/Main_Page" class="nav-link"><i class="fas fa-home mr-2"></i>Observatory Wiki</a></div>
+                                                ]]></component>
+                                                <component type="PersonalTools" hideNewtalkNotifier="yes" class="mr-5 mr-cmln-0"/>
+                                                <component type="Html"><![CDATA[
+                                                        <div id="menuToggle" class="d-inline-block d-cmln-none menu-toggle show-menu" title="Toggles a submenu if set on Mediawiki:Secondary-menu."></div>
+                                                ]]></component>
+                                        </component>
+                                </component>
+                        </cell>
+                </row>
+        </grid>
+	</component>
+        <grid class="banner d-print-none" mode="fluid">
+		<row class="container mx-auto">
+			<cell class="d-flex flex-column justify-content-center logo-bg">
+				<component type="SiteNotice"/>
+				<component type="Container" id="area-label" class="d-flex justify-content-center align-items-center mb-4">
+					<component type="Html"><![CDATA[
+						<div id="observatory-tagline" class="d-flex flex-column align-items-center">
+							<div class="h1">Looking for something?</div>
+							<div class="lead">hand picked essays. by humans. for humans</div>
+						</div>
+					]]></component>
+				</component>
+				<component type="SearchBar" class="m-auto" buttons="search"/> 
+			</cell>
+		</row>
+	</grid>
+	<component type="Container" class="submenu">
+		<component type="NavbarHorizontal" class="p-0 justify-content-center" collapsible="no">
+			<component type="NavMenu" flatten="no"/>
+			<component type="Menu" message="secondary-menu"/>
+			<component type="Toolbox" flatten="no" class="dropdown">
+				<modification type="ShowOnlyFor" permission="edit" />
+			</component>
+<!--			<component type="SearchBar" class="m-auto" buttons="search"/> -->
+		</component>
+`	</component>
+	<grid class="flex-fill">
+		<row>
+			<cell>
+				<component type="PageTools" class="flex-row py-2 mt-3 mt-cmln-0 mx-0 bg-light" hideSelectedNameSpace="yes">
+					<modification type="ShowOnlyFor" permission="edit" />
+				</component>
+				<component type="MainContent"/>
+			        <component type="Html"><![CDATA[
+                        		<a href="#" id="back-to-top"></a>
+			        ]]></component>
+			</cell>
+		</row>
+	</grid>
+	<component type="Container" class="d-print-none">
+		<component type="Logo" class="mt-5 mb-3"/> 
+		<component type="FooterInfo" class="justify-content-center" />
+	</component>
+	<grid class="footer mt-4" mode="fluid">
+		<row class="flex-column">
+			<component type="FooterPlaces" class="col justify-content-center"/>
+			<component type="Container" class="social-panel">
+				<component type="NavbarHorizontal" class="p-0 bg-transparent justify-content-center" collapsible="no">
+					<component type="Menu" message="social-menu"/>
+				</component>
+			</component>
+			<component type="FooterIcons" class="col justify-content-center m-0"/>
+		</row>
+	</grid>
+</structure>
